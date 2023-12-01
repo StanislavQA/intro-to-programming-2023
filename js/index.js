@@ -21,3 +21,32 @@ for (let index = 0; index < skills.length; index++) {
   skill.innerText = skills[index];
   skillsList.appendChild(skill);
 }
+var messageForm = document.forms["leave_message"];
+messageForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  var userNameTyped = messageForm.elements.usersName.value;
+  var userEmailTyped = messageForm.elements.usersEmail.value;
+  var userMessageTyped = messageForm.elements.usersMessage.value;
+  console.log(userNameTyped, userEmailTyped, userMessageTyped);
+  var messageSection = document.querySelector("#messages");
+  var messageList = messageSection.querySelector("ul");
+  var newMessage = document.createElement("li");
+  newMessage.innerHTML =
+    '<a href="mailto:' +
+    userEmailTyped +
+    '">' +
+    userNameTyped +
+    "</a> <span>" +
+    userMessageTyped +
+    "</span>";
+  messageList.appendChild(newMessage);
+  if (messageList.children.length === 0) {
+    messageSection.computedStyleMap.display = "none";
+  } else {
+    messageSection.computedStyleMap.display = "block";
+  }
+  var removeButton = document.createElement("button");
+  removeButton.textContent = "Remove";
+  newMessage.appendChild(removeButton);
+  messageForm.reset();
+});
