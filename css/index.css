@@ -1,0 +1,92 @@
+body {
+  background-color: lightblue;
+}
+.font-effect-fire {
+  font-family: "Sofia", sans-serif;
+  font-size: 60px;
+}
+section {
+  padding-left: 5%;
+  margin-top: 1em;
+}
+h1 {
+  size: 1em;
+  font-weight: bold;
+  color: rgb(236, 85, 26);
+}
+h2 {
+  size: 1em;
+  font-weight: bolder;
+  color: rgb(236, 85, 26);
+}
+#experience,
+#skills {
+  margin: 20px 0;
+  padding: 20px;
+  border: 2px solid #1239e4;
+  border-radius: 10px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: justify;
+}
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+label {
+  font-size: larger;
+  color: rgb(231, 32, 18);
+  margin-bottom: 10px;
+}
+input,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 120px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#messages li {
+  border: 2px solid #f805f8;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#messages li a {
+  text-decoration: none;
+  color: #5b02ff;
+  font-weight: bold;
+}
+
+#messages li span {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+#messages button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+footer {
+  background-color: #3498db;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
