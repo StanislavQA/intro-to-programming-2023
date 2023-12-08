@@ -1,0 +1,21 @@
+body {
+  background-color: lightblue;
+}
+.font-effect-fire {
+  font-family: "Sofia", sans-serif;
+  font-size: 60px;
+}
+section {
+  padding-left: 5%;
+  margin-top: 1em;
+}
+h1 {
+  size: 1em;
+  font-weight: bold;
+  color: rgb(236, 85, 26);
+}
+h2 {
+  size: 1em;
+  font-weight: bolder;
+  color: rgb(236, 85, 26);
+}
