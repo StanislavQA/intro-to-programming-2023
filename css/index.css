@@ -128,3 +128,15 @@ footer {
     width: auto;
   }
 }
+
+a {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #0a0ef7;
+}
+ul p {
+  font-style: italic;
+}

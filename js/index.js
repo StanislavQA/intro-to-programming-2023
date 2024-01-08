@@ -1,6 +1,7 @@
 var today = new Date();
 var thisYear = today.getFullYear();
 var footer = document.querySelector("footer");
+
 var copyright = document.createElement("p");
 copyright.innerHTML = "Stan White " + thisYear;
 footer.appendChild(copyright);
@@ -49,4 +50,30 @@ messageForm.addEventListener("submit", (event) => {
   removeButton.textContent = "Remove";
   newMessage.appendChild(removeButton);
   messageForm.reset();
+});
+var githubRequest = new XMLHttpRequest();
+
+githubRequest.open("GET", "https://api.github.com/users/StanislavQA/repos");
+githubRequest.send();
+
+githubRequest.addEventListener("load", function (event) {
+  var repositories = JSON.parse(this.response);
+  console.log(repositories);
+  var projectSection = document.querySelector("#projects"); // "projects" is an ID
+  var projectList = projectSection.querySelector("ul");
+  for (i = 0; i < repositories.length; i++) {
+    var projectLink = document.createElement("a");
+    projectLink.href = repositories[i].html_url;
+    projectLink.target = "_blank";
+    projectLink.textContent = repositories[i].name;
+
+    var project = document.createElement("li");
+    // project.innerText = repositories[i].name; // Repositories is an array of objects with a 'name' property
+    projectList.appendChild(projectLink);
+
+    var projectInfo = document.createElement("p");
+    projectInfo.textContent =
+      repositories[i].description || "No description available";
+    projectList.appendChild(projectInfo);
+  }
 });
