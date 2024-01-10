@@ -51,29 +51,29 @@ messageForm.addEventListener("submit", (event) => {
   newMessage.appendChild(removeButton);
   messageForm.reset();
 });
-var githubRequest = new XMLHttpRequest();
 
-githubRequest.open("GET", "https://api.github.com/users/StanislavQA/repos");
-githubRequest.send();
+fetch("https://api.github.com/users/StanislavQA/repos")
+  .then((response) => {
+    return response.json();
+  })
+  .then((response) => {
+    var projectSection = document.querySelector("#projects"); // "projects" is an ID
+    var projectList = projectSection.querySelector("ul");
+    for (i = 0; i < response.length; i++) {
+      var projectLink = document.createElement("a");
+      projectLink.href = response[i].html_url;
+      projectLink.target = "_blank";
+      projectLink.textContent = response[i].name;
 
-githubRequest.addEventListener("load", function (event) {
-  var repositories = JSON.parse(this.response);
-  console.log(repositories);
-  var projectSection = document.querySelector("#projects"); // "projects" is an ID
-  var projectList = projectSection.querySelector("ul");
-  for (i = 0; i < repositories.length; i++) {
-    var projectLink = document.createElement("a");
-    projectLink.href = repositories[i].html_url;
-    projectLink.target = "_blank";
-    projectLink.textContent = repositories[i].name;
+      var project = document.createElement("li");
+      projectList.appendChild(projectLink);
 
-    var project = document.createElement("li");
-    // project.innerText = repositories[i].name; // Repositories is an array of objects with a 'name' property
-    projectList.appendChild(projectLink);
-
-    var projectInfo = document.createElement("p");
-    projectInfo.textContent =
-      repositories[i].description || "No description available";
-    projectList.appendChild(projectInfo);
-  }
-});
+      var projectInfo = document.createElement("p");
+      projectInfo.textContent =
+        response[i].description || "No description available";
+      projectList.appendChild(projectInfo);
+    }
+  })
+  .catch((error) => {
+    console.error("Error fetching data:", error);
+  });
